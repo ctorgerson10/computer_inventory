@@ -1,6 +1,3 @@
-from utilities import clear
-
-
 class MenuOption:
 
     def __init__(self, label: str, action):

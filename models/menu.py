@@ -1,15 +1,20 @@
 import os
-from menuoption import MenuOption
-from utilities import clear
+
+from typing import List
+
+from .menuoption import MenuOption
+from .utilities import clear
 
 
 class Menu:
 
-    def __init__(self, heading: str, options: list[MenuOption]):
+    def __init__(self, heading: str, options: List[MenuOption], add_exit: bool = False):
         self.heading = heading
         self.options = options
         help_option = MenuOption("Help", self.help)
         self.options.append(help_option)
+        if add_exit:
+            self.options.append(MenuOption("Save and exit", exit))
 
     def help(self):
         """prints help statement which tells the user how to operate the program"""
@@ -39,20 +44,5 @@ class Menu:
             self.options[int(choice) - 1].activate()
 
 
-if __name__ == "__main__":
-    def add_computer():
-        return
-
-    def view_computers():
-        return
-
-    def edit_computer():
-        return
-
-    main_menu = Menu("Main Menu", [
-        MenuOption("Add Computer", add_computer),
-        MenuOption("View Computers", view_computers),
-        MenuOption("Edit a Computer", edit_computer)
-    ])
-
-    main_menu.display()
+if __name__ == "__main__":  # I'll use this area for testing
+    pass
