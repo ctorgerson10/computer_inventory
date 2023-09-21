@@ -24,6 +24,7 @@ class Menu:
         self.display()
 
     def display(self):
+        """display all menu items in order and accept input"""
         clear()
         print(self.heading.title() + "\n")
         for idx, option in enumerate(self.options):
@@ -32,6 +33,7 @@ class Menu:
         self.accept_input()
 
     def accept_input(self):
+        """handles user input to activate the appropriate menu item"""
         accepting = True
         while accepting:
             choice = input("> ")
@@ -44,5 +46,5 @@ class Menu:
             self.options[int(choice) - 1].activate()
 
 
-if __name__ == "__main__":  # I'll use this area for testing
+if __name__ == "__main__":  # for testing
     pass
