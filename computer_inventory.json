@@ -1,0 +1,16 @@
+{
+  "0" : {
+    "ip": "100.00.23.1",
+    "mac_address": "XX:XX:XX:XX:XX:XX",
+    "os": "Mac",
+    "status": "Active",
+    "name": "Olympus-Desktop"
+  },
+  "1": {
+    "ip": "123.456.789.10",
+    "mac_address": "XX:XX:XX:XX:XX:XX",
+    "os": "Windows",
+    "status": "Active",
+    "name": "W-Olympus-Desktop"
+  }
+}
