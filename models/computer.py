@@ -7,6 +7,13 @@ class Computer:
         self.status = status
         self.name = name if name is not None else f"Computer {self.ip}"
 
+    def __init__(self, json:dict):
+        self.ip = json.get('ip')
+        self.mac_address = json.get('mac_address')
+        self.os = json.get('os')
+        self.status = json.get('status')
+        self.name = json.get('name') if json.get('name') is not None else f"Computer {self.ip}"
+
     def __repr__(self):
         return self.name if self.name != "Computer" else f"{self.name} {self.ip}"
 
@@ -27,12 +34,12 @@ class Computer:
         if status.title() in statuses:
             self.status = status
         else:
-            print(f"Invalid status, enter one of: {statuses}")
+            print(f"Computer instantiated with invalid status, {status}. Defaulting to 'Active'")
+            self.status = "Active"
 
     def display(self):
         print(f"""
         {self.name}
         mac: {self.mac_address}
         os: {self.os}
-        status: {self.status}
-        """)
+        status: {self.status}""")

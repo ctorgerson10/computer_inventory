@@ -12,5 +12,12 @@
     "os": "Windows",
     "status": "Active",
     "name": "W-Olympus-Desktop"
+  },
+  "2": {
+    "ip": "123.0.0.1",
+    "mac_address": "XX:XX:XX:XX:XX:XX",
+    "os": "Windows",
+    "status": "Active",
+    "name": null
   }
 }

@@ -1,6 +1,8 @@
+# stuff
 import re
 import json
 
+# things
 from models.menu import Menu
 from models.menuoption import MenuOption
 from models.computer import Computer
@@ -12,11 +14,15 @@ ip_address_pattern = re.compile(r"(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\
 
 computers = []
 
-# Menu and function definitions
+# function definitions
 def load_data(filename):
     with open(filename, 'r+') as data:
         raw: dict = json.load(data)
-    return raw
+
+    for i in raw.items():
+        tmp = Computer(i[1])
+        computers.append(tmp)
+
 
 def save_data(obj, filename):
     with open(filename, 'w') as data:
@@ -31,10 +37,14 @@ def add_computer():
 
 
 def view_computers():
+    clear()
     if computers is not None:
-        print(computers)
+        for i in computers:
+            i.display()
+        print("\n")
     input("press enter to continue")
     main_menu.display()
+
 
 def edit_computer():
     clear()
@@ -50,6 +60,10 @@ main_menu = Menu("Main Menu", [
     ], add_exit=True)
 
 
-if __name__ == "__main__":
+def main():
     computers = load_data("computer_inventory.json")
     main_menu.display()
+
+
+if __name__ == "__main__":
+    main()
