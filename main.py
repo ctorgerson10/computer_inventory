@@ -1,5 +1,6 @@
 import re
 import json
+import time
 
 from models.menu import Menu
 from models.menuoption import MenuOption
@@ -14,6 +15,12 @@ save_file = 'computer_inventory.json'
 
 # function definitions
 def load_data(filename: str):
+    clear()
+    for i in range(1, 5):
+        print(f"loading{'.'*i}")
+        time.sleep(0.4)
+        clear()
+
     with open(filename, 'r+') as data:
         raw = json.load(data)
 
