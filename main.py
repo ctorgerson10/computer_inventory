@@ -12,19 +12,19 @@ from models.utilities import clear
 ip_address_pattern = re.compile(r"(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]["
                                 r"0-9]?)){3}")
 
-computers = []
+computers: 'list[Computer]' = []
 
 # function definitions
-def load_data(filename):
+def load_data(filename: str):
     with open(filename, 'r+') as data:
         raw: dict = json.load(data)
 
     for i in raw.items():
-        tmp = Computer(i[1])
+        tmp: Computer = Computer(i[1])
         computers.append(tmp)
 
 
-def save_data(obj, filename):
+def save_data(obj, filename: str):
     with open(filename, 'w') as data:
         json.dump(obj, filename)
 
