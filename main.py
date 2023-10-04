@@ -8,8 +8,6 @@ from models.computer import Computer
 from models.utilities import clear
 
 # some cool variables
-ip_address_pattern = re.compile(r"(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]["
-                                r"0-9]?)){3}")
 computers: 'list[Computer]' = []
 save_file = 'computer_inventory.json'
 
@@ -138,6 +136,7 @@ def remove_computer():
 
     computers.remove(computers[choice - 1])
     main_menu.display()
+
 
 main_menu = Menu("Main Menu", [
         MenuOption("Add Computer", add_computer),

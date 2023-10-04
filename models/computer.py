@@ -1,3 +1,8 @@
+import re
+
+ip_address_pattern = re.compile(r"(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]["
+                                r"0-9]?)){3}")
+
 class Computer:
 
     def __init__(self, ip: str, mac_address: str, os: str, status: str = "Active", name: str = None):
@@ -38,22 +43,39 @@ class Computer:
             self.status = "Active"
 
     def set_ip_input(self):
-        self.ip = str(input("ip: "))
+        accepting = True
+        while accepting:
+            self.ip = str(input("ip: "))
+            if ip_address_pattern.match(self.ip):
+                accepting = False
+            else:
+                print("Invalid IP, please re-enter")
+                continue
 
     def set_mac_address_input(self):
         self.mac_address = str(input("mac_address: "))
 
     def set_os_input(self):
-        self.os = input("os: ")
+        allowed_os = ['Mac', 'Windows', 'Linux', 'Other']
+        accepting = True
+        while accepting:
+            self.os = input("os: ").title()
+            if self.os in allowed_os:
+                accepting = False
+            else:
+                print(f"Invalid OS, enter one of: {allowed_os}")
+                continue
 
     def set_status_input(self):
         statuses = ["Active", "Retired", "Missing"]
-        status = input("status: ")
-        if status.title() in statuses:
-            self.status = status
-        else:
-            print(f"Computer instantiated with invalid status, {status}. Defaulting to 'Active'")
-            self.status = "Active"
+        accepting = True
+        while accepting:
+            status = input("status: ")
+            if status.title() in statuses:
+                self.status = status
+            else:
+                print(f"invalid status, enter one of: {statuses}")
+                continue
 
     def set_name_input(self):
         self.name = input("name: ")
