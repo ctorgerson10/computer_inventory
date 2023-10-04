@@ -1,0 +1,23 @@
+{
+    "0": {
+        "ip": "100.00.23.1",
+        "mac_address": "XX:XX:XX:XX:XX:XX",
+        "os": "Mac",
+        "status": "Active",
+        "name": "Olympus-Desktop"
+    },
+    "1": {
+        "ip": "12.0.0.1",
+        "mac_address": "XX:XX:XX:XX:XX:XX",
+        "os": "Linux",
+        "status": "Active",
+        "name": "CJ's PC"
+    },
+    "2": {
+        "ip": "123.0.0.1",
+        "mac_address": "XX:XX:XX:XX:XX:XX",
+        "os": "Windows",
+        "status": "Active",
+        "name": "Computer 123.0.0.1"
+    }
+}

@@ -10,5 +10,5 @@ class MenuOption:
         else:
             self.action()
 
-    def set_label(self, label):
+    def set_label(self, label: str):
         self.label = label
