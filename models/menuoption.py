@@ -1,6 +1,6 @@
 class MenuOption:
 
-    def __init__(self, label: str, action: function):
+    def __init__(self, label: str, action):
         self.label = label
         self.action = action
 

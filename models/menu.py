@@ -8,11 +8,12 @@ from .utilities import clear
 
 class Menu:
 
-    def __init__(self, heading: str, options: List[MenuOption], add_exit: bool = False):
+    def __init__(self, heading: str, options: List[MenuOption], add_exit: bool = False, add_help: bool = False):
         self.heading = heading
         self.options = options
         help_option = MenuOption("Help", self.help)
-        self.options.append(help_option)
+        if add_help:
+            self.options.append(help_option)
         if add_exit:
             self.options.append(MenuOption("Save and exit", exit))
 
@@ -42,9 +43,12 @@ class Menu:
             except ValueError as e:
                 print("invalid input, please enter a number")
                 continue
+            if choice < 0 or choice > (len(self.options) + 1):
+                print("invalid input, out of allowed range")
+                continue
             accepting = False
             self.options[int(choice) - 1].activate()
 
+    def add_option(self, option: MenuOption):
+        self.options.append(option)
 
-if __name__ == "__main__":  # for testing
-    pass
