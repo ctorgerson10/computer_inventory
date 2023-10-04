@@ -4,7 +4,7 @@ class Computer:
         self.ip = ip
         self.mac_address = mac_address
         self.os = os
-        self.status = status
+        self.set_status(status)
         self.name = name if name is not None else f"Computer {self.ip}"
 
     def __init__(self, json:dict):
