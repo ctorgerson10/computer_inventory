@@ -44,6 +44,7 @@ def save_and_exit():
 
 
 def add_computer():
+    # TODO: finish this
     clear()
     print("this will do something eventually")
     input("press enter to return to the menu")
@@ -104,7 +105,7 @@ main_menu = Menu("Main Menu", [
 
 
 def main():
-    computers = load_data(save_file)
+    load_data(save_file)
     main_menu.display()
 
 
