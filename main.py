@@ -13,7 +13,10 @@ ip_address_pattern = re.compile(r"(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\
 computers: 'list[Computer]' = []
 save_file = 'computer_inventory.json'
 
+
 # function definitions
+
+
 def load_data(filename: str):
     clear()
     for i in range(1, 5):
@@ -50,11 +53,22 @@ def save_and_exit():
 
 
 def add_computer():
-    # TODO: finish this
-    clear()
-    print("this will do something eventually")
-    input("press enter to return to the menu")
-    main_menu.display()
+    print("Adding new computer:")
+    ip = str(input("ip: "))
+    mac_address = str(input("mac_address: "))
+    os = str(input("os: "))
+    status = str(input("status: "))
+    name = str(input("name: "))
+    tmp = {
+        "ip": ip,
+        "mac_address": mac_address,
+        "os": os,
+        "status": status,
+        "name": name
+    }
+    computers.append(Computer(tmp))
+    input("press enter to continue")
+    save_and_return()
 
 
 def view_computers():
@@ -102,10 +116,34 @@ def edit_computer():
         edit_menu.display()
 
 
+def remove_computer():
+    clear()
+    for idx, computer in enumerate(computers):
+        print(f"{idx + 1}. {computer.name}")
+    accepting = True
+    while accepting:
+        choice = input("> ")
+
+        try:
+            choice = int(choice)
+        except ValueError as e:
+            print("invalid input, please enter a number")
+            continue
+
+        if choice < 0 or choice > len(computers)+1:
+            print("invalid input, out of allowed range")
+            continue
+
+        accepting = False
+
+    computers.remove(computers[choice - 1])
+    main_menu.display()
+
 main_menu = Menu("Main Menu", [
         MenuOption("Add Computer", add_computer),
         MenuOption("View Computers", view_computers),
         MenuOption("Edit a Computer", edit_computer),
+        MenuOption("Remove a Computer", remove_computer),
         MenuOption("Save and Exit", save_and_exit)
     ])
 
