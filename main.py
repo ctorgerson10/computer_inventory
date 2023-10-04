@@ -28,7 +28,6 @@ def save_data(filename: str):
     for idx, computer in enumerate(computers):
         payload[str(idx)] = computer.get_json()
 
-    print(payload)
     with open(filename, 'w+') as data:
         json.dump(payload, data, indent=4)
 
